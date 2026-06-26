@@ -94,12 +94,12 @@ export function AccountMenu() {
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={() => setPasswordOpen(true)}>
             <KeyRound className="h-4 w-4" />
-            Cambiar contraseÃ±a
+            Cambiar contraseña
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link to="/app/settings" className="cursor-pointer">
               <Settings className="h-4 w-4" />
-              ConfiguraciÃ³n
+              Configuración
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -108,7 +108,7 @@ export function AccountMenu() {
             onSelect={() => setLogoutOpen(true)}
           >
             <LogOut className="h-4 w-4" />
-            Cerrar sesiÃ³n
+            Cerrar sesión
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -131,14 +131,14 @@ export function AccountMenu() {
       <PrototypeFormDialog
         open={passwordOpen}
         onOpenChange={setPasswordOpen}
-        title="Cambiar contraseÃ±a"
-        description="Usa una contraseÃ±a segura de al menos 8 caracteres."
+        title="Cambiar contraseña"
+        description="Usa una contraseña segura de al menos 8 caracteres."
         fields={PASSWORD_FIELDS}
-        submitLabel="Actualizar contraseÃ±a"
+        submitLabel="Actualizar contraseña"
         onSubmit={() =>
           showSuccess(
-            "ContraseÃ±a actualizada",
-            "Tu nueva contraseÃ±a ya estÃ¡ activa."
+            "Contraseña actualizada",
+            "Tu nueva contraseña ya está activa."
           )
         }
       />
@@ -146,9 +146,9 @@ export function AccountMenu() {
       <ConfirmDialog
         open={logoutOpen}
         onOpenChange={setLogoutOpen}
-        title="Â¿Cerrar sesiÃ³n?"
-        description="SaldrÃ¡s de PersonalMetrics en este dispositivo."
-        confirmLabel="Cerrar sesiÃ³n"
+        title="¿Cerrar sesión?"
+        description="Saldrás de PersonalMetrics en este dispositivo."
+        confirmLabel="Cerrar sesión"
         cancelLabel="Cancelar"
         destructive
         onConfirm={logout}

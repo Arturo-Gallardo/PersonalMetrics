@@ -56,7 +56,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
       }
     } catch (RuntimeException ignored) {
-      // Malformed token â€” leave context empty; security entry point handles 401 if needed
+      // Malformed token — leave context empty; security entry point handles 401 if needed
     }
 
     filterChain.doFilter(request, response);

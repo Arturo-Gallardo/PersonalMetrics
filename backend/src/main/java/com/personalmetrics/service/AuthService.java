@@ -43,7 +43,7 @@ public class AuthService {
   @Transactional
   public AuthResponse register(RegisterRequest request) {
     if (userRepository.existsByEmail(request.email())) {
-      throw new IllegalArgumentException("El correo ya estÃ¡ registrado");
+      throw new IllegalArgumentException("El correo ya está registrado");
     }
 
     Restaurant restaurant = new Restaurant();

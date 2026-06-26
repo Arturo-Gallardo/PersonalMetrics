@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(BadCredentialsException.class)
   public ResponseEntity<Map<String, String>> handleBadCredentials() {
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-        .body(Map.of("message", "Correo o contraseÃ±a invÃ¡lidos"));
+        .body(Map.of("message", "Correo o contraseña inválidos"));
   }
 
   @ExceptionHandler(IllegalArgumentException.class)
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
         ex.getBindingResult().getFieldErrors().stream()
             .findFirst()
             .map(error -> error.getField() + " " + error.getDefaultMessage())
-            .orElse("Error de validaciÃ³n");
+            .orElse("Error de validación");
     return ResponseEntity.badRequest().body(Map.of("message", message));
   }
 }

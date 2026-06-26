@@ -111,7 +111,7 @@ public class DashboardService {
 
   private List<Map<String, Object>> defaultInventoryAlerts() {
     List<Map<String, Object>> list = new ArrayList<>();
-    list.add(Map.of("item", "SalmÃ³n del AtlÃ¡ntico", "qty", 4, "unit", "kg", "threshold", 8));
+    list.add(Map.of("item", "Salmón del Atlántico", "qty", 4, "unit", "kg", "threshold", 8));
     list.add(Map.of("item", "Crema espesa", "qty", 2, "unit", "L", "threshold", 6));
     list.add(Map.of("item", "Tomates San Marzano", "qty", 6, "unit", "latas", "threshold", 12));
     return list;
@@ -121,7 +121,7 @@ public class DashboardService {
     List<Map<String, Object>> list = new ArrayList<>();
     list.add(Map.of("supplier", "Mariscos Costa", "due", "2026-05-18", "amount", 4200));
     list.add(Map.of("supplier", "Productos del Valle", "due", "2026-05-22", "amount", 1850));
-    list.add(Map.of("supplier", "Suministros PanaderÃ­a Artesanal", "due", "2026-05-28", "amount", 960));
+    list.add(Map.of("supplier", "Suministros Panadería Artesanal", "due", "2026-05-28", "amount", 960));
     return list;
   }
 }

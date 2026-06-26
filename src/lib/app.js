@@ -20,7 +20,7 @@ export const INCOME_CHANNEL_LABELS = {
   DINE_IN: "Sueldo",
   TAKEOUT: "Trabajo independiente",
   DELIVERY: "Rendimientos",
-  CATERING: "Venta de artÃ­culos",
+  CATERING: "Venta de artículos",
   OTHER: "Otro ingreso",
 };
 
@@ -39,7 +39,7 @@ export const ALERT_TYPE_LABELS = {
 };
 
 export const SEVERITY_LABELS = {
-  critical: "CrÃ­tico",
+  critical: "Crítico",
   warning: "Advertencia",
-  info: "InformaciÃ³n",
+  info: "Información",
 };

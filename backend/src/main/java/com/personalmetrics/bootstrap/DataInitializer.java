@@ -75,9 +75,9 @@ public class DataInitializer implements CommandLineRunner {
   private void seedExpenses(Restaurant restaurant) {
     addExpense(restaurant, "Entrega semanal de productos", Expense.Category.INGREDIENTS, 1840, LocalDate.of(2026, 5, 8));
     addExpense(restaurant, "Gas y electricidad", Expense.Category.UTILITIES, 920, LocalDate.of(2026, 5, 6));
-    addExpense(restaurant, "NÃ³mina â€” sala", Expense.Category.SALARIES, 12400, LocalDate.of(2026, 5, 1));
+    addExpense(restaurant, "Nómina — sala", Expense.Category.SALARIES, 12400, LocalDate.of(2026, 5, 1));
     addExpense(restaurant, "Limpieza de campana", Expense.Category.MAINTENANCE, 650, LocalDate.of(2026, 5, 3));
-    addExpense(restaurant, "SuscripciÃ³n POS", Expense.Category.SUBSCRIPTIONS, 189, LocalDate.of(2026, 5, 1));
+    addExpense(restaurant, "Suscripción POS", Expense.Category.SUBSCRIPTIONS, 189, LocalDate.of(2026, 5, 1));
   }
 
   private void addExpense(
@@ -138,7 +138,7 @@ public class DataInitializer implements CommandLineRunner {
         LocalDate.of(2026, 5, 22));
     addSupplier(
         restaurant,
-        "Suministros PanaderÃ­a Artesanal",
+        "Suministros Panadería Artesanal",
         "hola@panaderiaartesanal.example",
         "+1 (555) 771-0093",
         "Harina, levadura, mantequilla",
@@ -187,17 +187,17 @@ public class DataInitializer implements CommandLineRunner {
   }
 
   private void seedAlerts(Restaurant restaurant) {
-    addAlert(restaurant, Alert.AlertType.INVENTORY, Alert.Severity.warning, "La crema espesa estÃ¡ por debajo del nivel mÃ­nimo.");
+    addAlert(restaurant, Alert.AlertType.INVENTORY, Alert.Severity.warning, "La crema espesa está por debajo del nivel mínimo.");
     addAlert(
         restaurant,
         Alert.AlertType.SUPPLIER,
         Alert.Severity.info,
-        "Pago a Mariscos Costa vence en 6 dÃ­as.");
+        "Pago a Mariscos Costa vence en 6 días.");
     addAlert(
         restaurant,
         Alert.AlertType.EXPENSE,
         Alert.Severity.warning,
-        "El gasto en servicios supera en 14% el promedio de los Ãºltimos 3 meses.");
+        "El gasto en servicios supera en 14% el promedio de los últimos 3 meses.");
     addAlert(
         restaurant,
         Alert.AlertType.PROFIT,

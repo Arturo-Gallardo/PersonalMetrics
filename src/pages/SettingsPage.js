@@ -23,7 +23,7 @@ const selectClassName =
 const passwordFields = [
   {
     id: "currentPassword",
-    label: "Escribe tu contraseÃ±a vieja",
+    label: "Escribe tu contraseña vieja",
     type: "password",
     required: true,
     fullWidth: true,
@@ -31,7 +31,7 @@ const passwordFields = [
   },
   {
     id: "confirmOldPassword",
-    label: "Escribe tu contraseÃ±a vieja de nuevo",
+    label: "Escribe tu contraseña vieja de nuevo",
     type: "password",
     required: true,
     fullWidth: true,
@@ -39,7 +39,7 @@ const passwordFields = [
   },
   {
     id: "newPassword",
-    label: "Escribe tu contraseÃ±a nueva",
+    label: "Escribe tu contraseña nueva",
     type: "password",
     required: true,
     fullWidth: true,
@@ -60,7 +60,7 @@ function SettingSwitch({ id, title, description, defaultChecked = false }) {
 }
 
 export default function SettingsPage() {
-  useDocumentTitle("ConfiguraciÃ³n");
+  useDocumentTitle("Configuración");
   const { user, logout } = useAuth();
   const [passwordOpen, setPasswordOpen] = React.useState(false);
   const [logoutOpen, setLogoutOpen] = React.useState(false);
@@ -79,7 +79,7 @@ export default function SettingsPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-8">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">ConfiguraciÃ³n</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Configuración</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Administra tu cuenta, tu perfil financiero y tus preferencias.
         </p>
@@ -104,7 +104,7 @@ export default function SettingsPage() {
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Correo electrÃ³nico</Label>
+            <Label htmlFor="email">Correo electrónico</Label>
             <Input
               id="email"
               type="email"
@@ -112,7 +112,7 @@ export default function SettingsPage() {
               className="max-w-md"
             />
             <p className="text-xs text-muted-foreground">
-              Este correo se usa para iniciar sesiÃ³n y recibir avisos
+              Este correo se usa para iniciar sesión y recibir avisos
               importantes.
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function SettingsPage() {
         <CardHeader>
           <CardTitle>Preferencias financieras</CardTitle>
           <CardDescription>
-            Ajusta cÃ³mo se muestran y organizan tus datos financieros.
+            Ajusta cómo se muestran y organizan tus datos financieros.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
@@ -142,7 +142,7 @@ export default function SettingsPage() {
             <div className="space-y-2">
               <Label htmlFor="currency">Moneda</Label>
               <select id="currency" className={selectClassName} defaultValue="USD">
-                <option value="USD">DÃ³lar Americano (USD)</option>
+                <option value="USD">Dólar Americano (USD)</option>
                 <option value="MXN">Peso Mexicano (MXN)</option>
               </select>
             </div>
@@ -155,7 +155,7 @@ export default function SettingsPage() {
               >
                 <option value="America/Hermosillo">Hermosillo (GMT-7)</option>
                 <option value="America/Mexico_City">
-                  Ciudad de MÃ©xico (GMT-6)
+                  Ciudad de México (GMT-6)
                 </option>
                 <option value="America/Tijuana">Tijuana (GMT-8)</option>
               </select>
@@ -164,8 +164,8 @@ export default function SettingsPage() {
           <div className="max-w-xs space-y-2">
             <Label htmlFor="monthStart">Periodo financiero</Label>
             <select id="monthStart" className={selectClassName} defaultValue="1">
-              <option value="1">Primer dÃ­a del mes</option>
-              <option value="15">DÃ­a 15 de cada mes</option>
+              <option value="1">Primer día del mes</option>
+              <option value="15">Día 15 de cada mes</option>
             </select>
           </div>
           <Button
@@ -186,7 +186,7 @@ export default function SettingsPage() {
         <CardHeader>
           <CardTitle>Notificaciones</CardTitle>
           <CardDescription>
-            Elige quÃ© avisos de la aplicaciÃ³n quieres recibir.
+            Elige qué avisos de la aplicación quieres recibir.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -200,13 +200,13 @@ export default function SettingsPage() {
           <SettingSwitch
             id="weeklySummary"
             title="Resumen financiero"
-            description="Resumen periÃ³dico de ingresos, gastos y patrimonio."
+            description="Resumen periódico de ingresos, gastos y patrimonio."
             defaultChecked
           />
           <Separator />
           <SettingSwitch
             id="forecastChanges"
-            title="Cambios en el pronÃ³stico"
+            title="Cambios en el pronóstico"
             description="Avisos cuando cambien tus ingresos, gastos o ahorro proyectado."
           />
           <Button
@@ -228,15 +228,15 @@ export default function SettingsPage() {
         <CardHeader>
           <CardTitle>Seguridad</CardTitle>
           <CardDescription>
-            Protege el acceso a tu cuenta y administra tu sesiÃ³n.
+            Protege el acceso a tu cuenta y administra tu sesión.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-sm font-medium">ContraseÃ±a</p>
+              <p className="text-sm font-medium">Contraseña</p>
               <p className="text-sm text-muted-foreground">
-                Actualiza tu contraseÃ±a periÃ³dicamente.
+                Actualiza tu contraseña periódicamente.
               </p>
             </div>
             <Button
@@ -244,13 +244,13 @@ export default function SettingsPage() {
               variant="outline"
               onClick={() => setPasswordOpen(true)}
             >
-              Cambiar contraseÃ±a
+              Cambiar contraseña
             </Button>
           </div>
           <Separator />
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-sm font-medium">Cerrar sesiÃ³n</p>
+              <p className="text-sm font-medium">Cerrar sesión</p>
               <p className="text-sm text-muted-foreground">
                 Sal de PersonalMetrics en este dispositivo.
               </p>
@@ -260,7 +260,7 @@ export default function SettingsPage() {
               variant="outline"
               onClick={() => setLogoutOpen(true)}
             >
-              Cerrar sesiÃ³n
+              Cerrar sesión
             </Button>
           </div>
         </CardContent>
@@ -270,7 +270,7 @@ export default function SettingsPage() {
         <CardHeader>
           <CardTitle>Eliminar cuenta</CardTitle>
           <CardDescription>
-            Esta acciÃ³n eliminarÃ¡ permanentemente todos tus datos financieros.
+            Esta acción eliminará permanentemente todos tus datos financieros.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -293,23 +293,23 @@ export default function SettingsPage() {
       <PrototypeFormDialog
         open={passwordOpen}
         onOpenChange={setPasswordOpen}
-        title="Cambiar contraseÃ±a"
-        description="Cambia tu contraseÃ±a."
+        title="Cambiar contraseña"
+        description="Cambia tu contraseña."
         fields={passwordFields}
-        submitLabel="Cambiar contraseÃ±a"
+        submitLabel="Cambiar contraseña"
         onSubmit={() =>
           showSuccess(
-            "ContraseÃ±a actualizada",
-            "Tu contraseÃ±a ha sido actualizada."
+            "Contraseña actualizada",
+            "Tu contraseña ha sido actualizada."
           )
         }
       />
       <ConfirmDialog
         open={logoutOpen}
         onOpenChange={setLogoutOpen}
-        title="Â¿EstÃ¡s seguro que quieres cerrar sesiÃ³n?"
-        description="TendrÃ¡s que iniciar sesiÃ³n de nuevo despuÃ©s."
-        confirmLabel="Cerrar sesiÃ³n"
+        title="¿Estás seguro que quieres cerrar sesión?"
+        description="Tendrás que iniciar sesión de nuevo después."
+        confirmLabel="Cerrar sesión"
         cancelLabel="Cancelar"
         destructive
         onConfirm={logout}
@@ -317,8 +317,8 @@ export default function SettingsPage() {
       <ConfirmDialog
         open={deleteOpen}
         onOpenChange={setDeleteOpen}
-        title="Â¿EstÃ¡s seguro que quieres borrar tu cuenta?"
-        description="Esta acciÃ³n eliminarÃ¡ permanentemente todos tus datos."
+        title="¿Estás seguro que quieres borrar tu cuenta?"
+        description="Esta acción eliminará permanentemente todos tus datos."
         confirmLabel="BORRAR CUENTA"
         cancelLabel="Cancelar"
         destructive
