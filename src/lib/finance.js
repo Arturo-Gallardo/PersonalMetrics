@@ -12,14 +12,14 @@ export const INCOME_CATEGORY_LABELS = {
   salary: "Sueldo",
   freelance: "Trabajo independiente",
   investment: "Rendimientos",
-  sale: "Venta de artÃ­culos",
+  sale: "Venta de art\u00edculos",
   other: "Otro ingreso",
 };
 
 export const ASSET_CATEGORY_LABELS = {
-  vehicle: "VehÃ­culo",
-  technology: "TecnologÃ­a",
-  investment: "InversiÃ³n",
+  vehicle: "Veh\u00edculo",
+  technology: "Tecnolog\u00eda",
+  investment: "Inversi\u00f3n",
   property: "Inmueble",
   collectible: "Coleccionable",
   other: "Otro",
@@ -33,14 +33,14 @@ export const ALERT_TYPE_LABELS = {
   balance: "Balance",
   savings: "Ahorro",
   asset: "Activo",
-  forecast: "Pronóstico",
+  forecast: "Pron\u00f3stico",
   summary: "Resumen",
 };
 
 export const ALERT_SEVERITY_LABELS = {
-  info: "InformaciÃ³n",
+  info: "Informaci\u00f3n",
   warning: "Advertencia",
-  critical: "CrÃ­tica",
+  critical: "Cr\u00edtica",
 };
 
 export function sumBy(items, getValue) {
