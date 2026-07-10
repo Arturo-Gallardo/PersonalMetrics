@@ -35,15 +35,8 @@ export default function App() {
                 <Route path="income" element={<IncomePage />} />
                 <Route path="expenses" element={<ExpensesPage />} />
                 <Route path="assets" element={<AssetsPage />} />
-                <Route path="inventory" element={<Navigate to="/app/assets" replace />} />
-                <Route path="suppliers" element={<Navigate to="/app" replace />} />
-                <Route path="break-even" element={<Navigate to="/app" replace />} />
                 <Route path="alerts" element={<AlertsPage />} />
                 <Route path="forecast" element={<ForecastPage />} />
-                <Route
-                  path="analytics"
-                  element={<Navigate to="/app/forecast" replace />}
-                />
                 <Route path="settings" element={<SettingsPage />} />
               </Route>
               <Route path="/" element={<Navigate to="/app" replace />} />

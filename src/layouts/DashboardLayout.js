@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Outlet } from "react-router-dom";
 import {
   AppSidebar,
@@ -6,9 +7,20 @@ import {
 } from "components/layout/AppSidebar";
 import { AccountMenu } from "components/layout/AccountMenu";
 import { ThemeToggle } from "components/layout/ThemeToggle";
+import { OnboardingDialog } from "components/OnboardingDialog";
+import { useAuth } from "context/AuthContext";
 import { APP_NAME } from "lib/app";
 
 export function DashboardLayout() {
+  const { user, completeOnboarding } = useAuth();
+  const [onboardingPending, setOnboardingPending] = React.useState(false);
+
+  async function handleCompleteOnboarding() {
+    setOnboardingPending(true);
+    await completeOnboarding();
+    setOnboardingPending(false);
+  }
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-background">
       <header className="sticky top-0 z-30 flex shrink-0 border-b-2 border-primary bg-background">
@@ -38,6 +50,12 @@ export function DashboardLayout() {
           </div>
         </main>
       </div>
+
+      <OnboardingDialog
+        open={Boolean(user && !user.onboardingCompleted)}
+        pending={onboardingPending}
+        onComplete={handleCompleteOnboarding}
+      />
     </div>
   );
 }

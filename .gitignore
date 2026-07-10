@@ -28,3 +28,10 @@ yarn-error.log*
 more.md
 app.txt
 .codex-devserver.log
+
+PROJECT_SCOPE.md
+AGENTS.md
+docs/Changes.md
+docs/Structure.md
+docs/Instructions.md
+/docs

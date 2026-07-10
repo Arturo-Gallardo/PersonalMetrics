@@ -144,9 +144,9 @@ export function PrototypeFormDialog({
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          {description ? (
-            <DialogDescription>{description}</DialogDescription>
-          ) : null}
+          <DialogDescription className={description ? undefined : "sr-only"}>
+            {description || "Formulario de edición"}
+          </DialogDescription>
         </DialogHeader>
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="grid gap-4 sm:grid-cols-2">

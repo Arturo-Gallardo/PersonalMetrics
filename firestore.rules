@@ -1,0 +1,116 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function ownsUserDoc(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function isNonEmptyString(value, maxSize) {
+      return value is string && value.size() > 0 && value.size() <= maxSize;
+    }
+
+    function isOptionalString(data, key, maxSize) {
+      return !(key in data) || (data[key] is string && data[key].size() <= maxSize);
+    }
+
+    function isDateString(value) {
+      return value is string && value.size() == 10;
+    }
+
+    function hasValidTimestamps(data) {
+      return data.createdAt is timestamp && data.updatedAt is timestamp;
+    }
+
+    function validPreferences(data) {
+      return data is map
+        && data.keys().hasOnly(['currency', 'timezone', 'monthStart', 'paymentReminders', 'weeklySummary', 'forecastChanges'])
+        && data.currency is string
+        && data.timezone is string
+        && data.monthStart is string
+        && data.paymentReminders is bool
+        && data.weeklySummary is bool
+        && data.forecastChanges is bool;
+    }
+
+    function validUserProfile(data) {
+      return data.keys().hasOnly(['email', 'firstName', 'lastName', 'onboardingCompleted', 'preferences', 'createdAt', 'updatedAt'])
+        && isNonEmptyString(data.email, 254)
+        && isNonEmptyString(data.firstName, 80)
+        && isOptionalString(data, 'lastName', 120)
+        && data.onboardingCompleted is bool
+        && validPreferences(data.preferences)
+        && isOptionalString(data, 'createdAt', 40)
+        && data.updatedAt is timestamp;
+    }
+
+    function validIncome(data) {
+      return data.keys().hasOnly(['label', 'category', 'amount', 'date', 'createdAt', 'updatedAt'])
+        && isNonEmptyString(data.label, 120)
+        && data.category in ['salary', 'freelance', 'investment', 'sale', 'other']
+        && data.amount is number
+        && data.amount >= 0
+        && isDateString(data.date)
+        && hasValidTimestamps(data);
+    }
+
+    function validExpense(data) {
+      return data.keys().hasOnly(['label', 'category', 'amount', 'date', 'recurring', 'createdAt', 'updatedAt'])
+        && isNonEmptyString(data.label, 120)
+        && data.category in ['housing', 'food', 'transport', 'utilities', 'health', 'subscriptions', 'other']
+        && data.amount is number
+        && data.amount >= 0
+        && isDateString(data.date)
+        && data.recurring is bool
+        && hasValidTimestamps(data);
+    }
+
+    function validAsset(data) {
+      return data.keys().hasOnly(['name', 'description', 'category', 'current', 'createdAt', 'updatedAt'])
+        && isNonEmptyString(data.name, 120)
+        && isOptionalString(data, 'description', 240)
+        && data.category in ['vehicle', 'technology', 'investment', 'property', 'collectible', 'other']
+        && data.current is number
+        && data.current >= 0
+        && hasValidTimestamps(data);
+    }
+
+    function validAlert(data) {
+      return data.keys().hasOnly(['type', 'severity', 'message', 'date', 'source', 'createdAt', 'updatedAt'])
+        && data.type in ['income', 'expense', 'recurring', 'budget', 'balance', 'savings', 'asset', 'forecast', 'summary']
+        && data.severity in ['info', 'warning', 'critical']
+        && isNonEmptyString(data.message, 240)
+        && isDateString(data.date)
+        && isOptionalString(data, 'source', 40)
+        && hasValidTimestamps(data);
+    }
+
+    function validCollectionData(collectionName, data) {
+      return (collectionName == 'income' && validIncome(data))
+        || (collectionName == 'expenses' && validExpense(data))
+        || (collectionName == 'assets' && validAsset(data))
+        || (collectionName == 'alerts' && validAlert(data));
+    }
+
+    match /users/{userId} {
+      allow read: if ownsUserDoc(userId);
+      allow create, update: if ownsUserDoc(userId) && validUserProfile(request.resource.data);
+      allow delete: if false;
+
+      match /{collectionName}/{documentId} {
+        allow read, delete: if ownsUserDoc(userId)
+          && collectionName in ['income', 'expenses', 'assets', 'alerts'];
+        allow create, update: if ownsUserDoc(userId)
+          && validCollectionData(collectionName, request.resource.data);
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
