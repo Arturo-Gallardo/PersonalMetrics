@@ -36,9 +36,12 @@ const activeNavClass =
 
 export function SidebarBrand({ subtitle = APP_TAGLINE }) {
   return (
-    <div className="flex flex-col">
-      <span className="text-xl font-bold tracking-tight text-primary">{APP_NAME}</span>
-      <span className="text-sm text-muted-foreground">{subtitle}</span>
+    <div className="flex items-center gap-2.5">
+      <img src="/brand-mark.png" alt="" className="h-9 w-9 shrink-0" />
+      <div className="flex flex-col">
+        <span className="text-xl font-bold tracking-tight text-primary">{APP_NAME}</span>
+        <span className="text-sm text-muted-foreground">{subtitle}</span>
+      </div>
     </div>
   );
 }
@@ -92,8 +95,11 @@ export function MobileNav() {
       </DialogTrigger>
       <DialogContent className="left-0 top-0 flex h-full max-w-xs translate-x-0 translate-y-0 flex-col rounded-none border-y-0 border-l-0 p-0 sm:max-w-xs">
         <DialogHeader className="border-b bg-background px-4 py-4 text-left">
-          <DialogTitle className="text-xl font-bold text-primary">{APP_NAME}</DialogTitle>
-          <p className="text-sm text-muted-foreground">{APP_TAGLINE}</p>
+          <DialogTitle className="flex items-center gap-2.5 text-xl font-bold text-primary">
+            <img src="/brand-mark.png" alt="" className="h-9 w-9 shrink-0" />
+            {APP_NAME}
+          </DialogTitle>
+          <p className="pl-[46px] text-sm text-muted-foreground">{APP_TAGLINE}</p>
         </DialogHeader>
         <div className="flex-1 overflow-y-auto p-3">
           <NavItems mobile onNavigate={() => setOpen(false)} />

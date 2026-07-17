@@ -30,9 +30,12 @@ export function DashboardLayout() {
         <div className="flex h-14 min-w-0 flex-1 items-center justify-between gap-3 px-4">
           <div className="flex items-center gap-3">
             <MobileNav />
-            <div className="flex flex-col lg:hidden">
-              <span className="text-sm font-bold text-primary">{APP_NAME}</span>
-              <span className="text-[11px] text-muted-foreground">Finanzas personales</span>
+            <div className="flex items-center gap-2 lg:hidden">
+              <img src="/brand-mark.png" alt="" className="h-8 w-8 shrink-0" />
+              <div className="flex flex-col">
+                <span className="text-sm font-bold text-primary">{APP_NAME}</span>
+                <span className="text-[11px] text-muted-foreground">Finanzas personales</span>
+              </div>
             </div>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">

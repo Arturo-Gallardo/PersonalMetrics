@@ -31,8 +31,14 @@ export default function SignUpPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!firstName.trim() || !emailPattern.test(email.trim()) || password.length < 6) {
-      setFormError("Ingresa nombre, correo válido y contraseña de al menos 6 caracteres.");
+    if (
+      !firstName.trim() ||
+      !emailPattern.test(email.trim()) ||
+      password.length < 6
+    ) {
+      setFormError(
+        "Ingresa nombre, correo válido y contraseña de al menos 6 caracteres.",
+      );
       return;
     }
 
@@ -55,7 +61,8 @@ export default function SignUpPage() {
             Regístrate en {APP_NAME}
           </CardTitle>
           <CardDescription>
-            Crea una cuenta privada para registrar ingresos, gastos, activos, alertas y pronósticos personales.
+            Crea una cuenta privada para registrar ingresos, gastos, activos,
+            alertas y pronósticos personales.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -68,28 +75,57 @@ export default function SignUpPage() {
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
                 <Label htmlFor="firstName">Nombre</Label>
-                <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                <Input
+                  id="firstName"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="lastName">Apellido</Label>
-                <Input id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                <Input
+                  id="lastName"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
               </div>
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Correo electrónico</Label>
-              <Input id="email" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <Input
+                id="email"
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Contraseña</Label>
-              <Input id="password" type="password" autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <p className="text-xs text-muted-foreground">Mínimo 6 caracteres.</p>
+              <Input
+                id="password"
+                type="password"
+                autoComplete="new-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <p className="text-xs text-muted-foreground">
+                Mínimo 6 caracteres.
+              </p>
             </div>
             <Button className="w-full" type="submit" disabled={pending}>
               {pending ? "Creando…" : "Continuar"}
             </Button>
           </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
-            ¿Ya tienes cuenta? <Link to="/login" className="font-medium text-primary underline-offset-4 hover:underline">Inicia sesión</Link>
+            ¿Ya tienes cuenta?{" "}
+            <Link
+              to="/login"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Inicia sesión
+            </Link>
           </p>
         </CardContent>
       </Card>

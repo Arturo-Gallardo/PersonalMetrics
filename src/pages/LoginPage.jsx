@@ -36,7 +36,9 @@ export default function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (!emailPattern.test(email.trim()) || password.length < 6) {
-      setFormError("Ingresa un correo válido y una contraseña de al menos 6 caracteres.");
+      setFormError(
+        "Ingresa un correo válido y una contraseña de al menos 6 caracteres.",
+      );
       return;
     }
 
@@ -66,7 +68,8 @@ export default function LoginPage() {
             Inicia sesión en {APP_NAME}
           </CardTitle>
           <CardDescription>
-            Entra para consultar tu resumen financiero, registrar ingresos y gastos, revisar activos y anticipar cambios.
+            Entra para consultar tu resumen financiero, registrar ingresos y
+            gastos, revisar activos y anticipar cambios.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -78,15 +81,33 @@ export default function LoginPage() {
             ) : null}
             <div className="space-y-2">
               <Label htmlFor="email">Correo electrónico</Label>
-              <Input id="email" type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <Input
+                id="email"
+                type="email"
+                autoComplete="username"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Contraseña</Label>
-              <Input id="password" type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <Input
+                id="password"
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">Tus datos financieros en un solo lugar</span>
-              <button type="button" className="text-sm font-medium text-primary underline-offset-4 hover:underline" onClick={() => setForgotOpen(true)}>
+              <span className="text-sm text-muted-foreground">
+                Tus datos financieros en un solo lugar
+              </span>
+              <button
+                type="button"
+                className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+                onClick={() => setForgotOpen(true)}
+              >
                 ¿Olvidaste tu contraseña?
               </button>
             </div>
@@ -95,7 +116,13 @@ export default function LoginPage() {
             </Button>
           </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
-            ¿No tienes cuenta? <Link to="/signup" className="font-medium text-primary underline-offset-4 hover:underline">Crear una</Link>
+            ¿No tienes cuenta?{" "}
+            <Link
+              to="/signup"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Crear una
+            </Link>
           </p>
         </CardContent>
       </Card>
@@ -105,11 +132,25 @@ export default function LoginPage() {
         onOpenChange={setForgotOpen}
         title="Recuperación de contraseña"
         description="Ingresa el correo asociado a tu cuenta. Firebase enviará un enlace seguro para crear una nueva contraseña."
-        fields={[{ id: "email", label: "Correo electrónico", type: "email", defaultValue: email, required: true, fullWidth: true }]}
+        fields={[
+          {
+            id: "email",
+            label: "Correo electrónico",
+            type: "email",
+            defaultValue: email,
+            required: true,
+            fullWidth: true,
+          },
+        ]}
         submitLabel="Enviar enlace"
         onSubmit={handleReset}
       />
-      <SuccessDialog open={resetSentOpen} onOpenChange={setResetSentOpen} title="Revisa tu correo" description="Si existe una cuenta con ese correo, recibirás un enlace para recuperar tu contraseña." />
+      <SuccessDialog
+        open={resetSentOpen}
+        onOpenChange={setResetSentOpen}
+        title="Revisa tu correo"
+        description="Si existe una cuenta con ese correo, recibirás un enlace para recuperar tu contraseña."
+      />
     </div>
   );
 }
